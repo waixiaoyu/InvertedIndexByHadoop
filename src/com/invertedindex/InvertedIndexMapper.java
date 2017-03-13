@@ -42,6 +42,7 @@ public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Text> 
 
 		// https://hadoop.apache.org/docs/r2.4.1/api/org/apache/hadoop/mapred/FileSplit.html
 		String fileName = ((FileSplit) context.getInputSplit()).getPath().getName();
+		fileName = fileName.substring(0, fileName.lastIndexOf("."));
 		Text name = new Text(fileName);
 
 		// fast & iterator don't have to load all data
